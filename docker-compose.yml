@@ -14,6 +14,21 @@ services:
     depends_on:
       - pg
 
+  guardian:
+    image: docker.pkg.github.com/monkiato/guardian/guardian:0.10
+    restart: always
+    ports:
+      - 8081:8080
+    environment:
+      SECRET_KEY: 'my-secret-key'
+      DB_HOST: pg
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASS: changeme
+    depends_on:
+      - pg
+
+
   pg:
     image: postgres
     environment:

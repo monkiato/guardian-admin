@@ -17,14 +17,14 @@ steps:
   - name: coverage
     image: plugins/codecov
     settings:
-      token: c6cf2305-8bfc-4787-9ef0-f31d156f9646
+      token: 743b62e8-5e6a-4535-a8df-f1d69f9e1261
       files:
         - coverage.txt
 
   - name: publish
     image: plugins/docker
     settings:
-      repo: docker.pkg.github.com/monkiato/guardian/guardian
+      repo: docker.pkg.github.com/monkiato/guardian-admin/guardian-admin
       registry: docker.pkg.github.com
       tags: ${DRONE_TAG}
       username:
