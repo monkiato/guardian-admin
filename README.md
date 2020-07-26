@@ -1,3 +1,5 @@
+<img src="docs/settings.svg" width="30%"/>
+
 # Guardian Admin
 
 [![Build Status](https://drone.monkiato.com/api/badges/monkiato/guardian-admin/status.svg?ref=refs/heads/master)](https://drone.monkiato.com/monkiato/guardian-admin)
@@ -23,3 +25,7 @@ No extra parameters are required for the docker image, so just run:
 `docker-compose.yml` is available as a sample to deploy a stack with Guardian and a Postgres DB
 
 Run `docker-compose -f docker-compose.yml up -d`
+
+## 'Guardian' Logo
+
+<div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
