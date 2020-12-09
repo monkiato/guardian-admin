@@ -29,6 +29,17 @@ func main() {
 	logger.Print("creating db...")
 	createDB()
 
+	// create admin user for the first time
+	adminUser := &models.User{
+		Email:    "admin@admin.com",
+		Name:     "Admin",
+		Lastname: "Admin",
+		Username: "admin",
+		Password: "admin",
+		Approved: true,
+	}
+	db.Create(&adminUser)
+
 	logger.Print("adding routes...")
 	auth := router.PathPrefix("/admin").Subrouter()
 	routes.NewAdmin(db, logger).AddRoutes(auth)
@@ -36,7 +47,22 @@ func main() {
 	router.Use(loggingMiddleware)
 	router.NotFoundHandler = http.HandlerFunc(notFound)
 
-	handler := cors.Default().Handler(router)
+	handler := cors.New(cors.Options{
+		AllowedOrigins: []string{"*"},
+		AllowedMethods: []string{
+			http.MethodHead,
+			http.MethodGet,
+			http.MethodPost,
+			http.MethodPut,
+			http.MethodPatch,
+			http.MethodDelete,
+		},
+		AllowedHeaders:   []string{"*"},
+		AllowCredentials: false,
+		ExposedHeaders: []string{
+			"X-Total-Count",
+		},
+	}).Handler(router)
 
 	port := 8080
 	logger.Printf("initialization ready. server running at http://localhost:%d", port)

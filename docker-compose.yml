@@ -15,7 +15,7 @@ services:
       - pg
 
   guardian:
-    image: docker.pkg.github.com/monkiato/guardian/guardian:0.10
+    image: guardian:0.10
     restart: always
     ports:
       - 8081:8080
